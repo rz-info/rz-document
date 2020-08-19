@@ -19,7 +19,6 @@ export default {
   },
   data() {
     return {
-      isCollapse: false,
       defaultActive: "/components/table",
       menuList: [
         {
@@ -33,6 +32,10 @@ export default {
         {
           label: "标签",
           path: "/components/tag"
+        },
+        {
+          label: "弹窗",
+          path: "/components/eject"
         }
       ]
     };

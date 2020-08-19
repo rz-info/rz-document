@@ -154,10 +154,29 @@ export default {
 
 ```
 
-### 自定义事件
+### 事件
 
-`table` 组件内部通过 `$emit` 方法触发按钮的事件, 所以需要在 `table` 组件上绑定将被调用的事件及处理函数
+`table` 组件内部通过 `$emit` 方法触发按钮的事件, 需要在 `table` 组件上绑定对应的函数
 
-`selection-change` 为复选框被选中时触发的事件
+```js
+export default {
 
-`handleCurrentChange` 为分页触发事件
+  ...
+
+  methods: {
+    emitEvent(event, data) {
+      this.$emit(event, data);
+    },
+
+    // 分页触发事件
+    handleCurrentChange(val) {
+      this.$emit("handleCurrentChange", val);
+    },
+
+    // 复选框被选中时触发的事件
+    handleSelectionChange(data) {
+      this.$emit("selection-change", data);
+    }
+}
+
+```

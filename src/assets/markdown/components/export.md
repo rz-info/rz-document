@@ -89,9 +89,9 @@ export default {
 }
 ```
 
-#### 导出接口所需参数
+### * 导出接口所需参数
 
-> 直接取 `exportConfig` 中的 `map` 和 `fileType` 即可, 具体方法各异
+直接取 `exportConfig` 中的 `map` 和 `fileType` 即可, 具体方法各异
 
 ```js
 export default {

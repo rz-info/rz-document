@@ -38,6 +38,12 @@ const routes = [
             name: "tag",
             component: resolve =>
               require(["@/views/components/tag.vue"], resolve)
+          },
+          {
+            path: "/components/eject",
+            name: "eject",
+            component: resolve =>
+              require(["@/views/components/eject.vue"], resolve)
           }
         ]
       },
