@@ -67,10 +67,12 @@ export default {
   },
   props: {
     tableMap: {
-      type: Array
+      type: Array,
+      default: () => []
     },
     tableData: {
-      type: Object
+      type: Object,
+      default: () => {}
     },
     tableConfig: {
       type: Object,

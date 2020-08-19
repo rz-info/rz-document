@@ -18,7 +18,7 @@ export default {
     },
     menuList: {
       type: Array,
-      default: [
+      default: () => [
         {
           label: "",
           path: ""

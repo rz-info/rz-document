@@ -26,7 +26,7 @@ export default {
     tableData: {
       type: Object,
       required: false,
-      default: [] //表数据
+      default: () => [] //表数据
     }
   },
   methods: {

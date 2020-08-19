@@ -1,5 +1,5 @@
 <template>
-  <div class="rz-tag fl fl-jc-ctr" :style="tagStyle">
+  <div class="rz-tag" :style="tagStyle">
     <div
       class="rz-tag-label textOF"
       v-text="tagData.label"
@@ -18,13 +18,15 @@ export default {
     tagData: {
       type: Object,
       required: true,
-      default: {
-        label: "",
-        value: "",
-        backgroundColor: "",
-        width: [],
-        height: 34,
-        padding: 4
+      default: () => {
+        return {
+          label: "",
+          value: "",
+          backgroundColor: "",
+          width: [],
+          height: 34,
+          padding: 4
+        };
       }
     }
   },
@@ -45,8 +47,8 @@ export default {
   computed: {
     tagStyle() {
       return {
-        height: this.tagData.height || this.defaultData.height + "px",
-        lineHeight: this.tagData.height || this.defaultData.height + "px"
+        height: (this.tagData.height || this.defaultData.height) + "px",
+        lineHeight: (this.tagData.height || this.defaultData.height) + "px"
       };
     },
     tagLabelStyle() {
@@ -68,7 +70,8 @@ export default {
             ? this.tagData.width[1]
             : this.defaultData.width[1]) + "px",
         backgroundColor: this.tagData.backgroundColor
-          ? this.tagData.backgroundColor.indexOf("#") > -1
+          ? this.tagData.backgroundColor.indexOf("#") > -1 ||
+            this.tagData.backgroundColor.indexOf("rgb") > -1
             ? this.tagData.backgroundColor
             : this.colorMap[this.tagData.backgroundColor]
           : this.colorMap["yellow"]
@@ -80,6 +83,8 @@ export default {
 <style lang="scss" scoped>
 .rz-tag {
   text-align: center;
+  display: flex;
+  justify-content: center;
 
   .rz-tag-label {
     padding: 0 5px;

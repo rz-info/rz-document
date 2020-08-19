@@ -10,11 +10,13 @@ VueRouter.prototype.push = function push(location) {
 const routes = [
   {
     path: "/",
+    redirect: "/components",
     component: resolve =>
       require(["@/components/documentComponents/layer.vue"], resolve),
     children: [
       {
         path: "/components",
+        redirect: "/components/table",
         name: "components",
         component: resolve =>
           require(["@/views/components/index.vue"], resolve),
@@ -29,13 +31,13 @@ const routes = [
             path: "/components/export",
             name: "export",
             component: resolve =>
-              require(["@/views/components/table.vue"], resolve)
+              require(["@/views/components/export.vue"], resolve)
           },
           {
             path: "/components/tag",
             name: "tag",
             component: resolve =>
-              require(["@/views/components/table.vue"], resolve)
+              require(["@/views/components/tag.vue"], resolve)
           }
         ]
       },
@@ -43,6 +45,11 @@ const routes = [
         path: "/methods",
         name: "methods",
         component: resolve => require(["@/views/methods/index.vue"], resolve)
+      },
+      {
+        path: "/classes",
+        name: "classes",
+        component: resolve => require(["@/views/classes/index.vue"], resolve)
       }
     ]
   }

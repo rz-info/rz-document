@@ -59,7 +59,6 @@ export default {
   },
   watch: {
     checked(now) {
-      console.log("change", now);
       this.exportConfig.map = {};
       now.forEach(ele => {
         const nowEl = cloneObj(this.exportConfig.tableList[ele - 1]);
@@ -85,8 +84,15 @@ export default {
   computed: {
     imgList() {
       return this.exportConfig.typeList.map(ele => {
-        if (ele == "excel") {
-          return "leadExcel.png";
+        switch (ele) {
+          case "excel":
+            return "leadExcel.png";
+          case "pdf":
+            return "leadPdf.png";
+          case "word":
+            return "leadWord.png";
+          default:
+            return "leadExcel.png";
         }
       });
     }

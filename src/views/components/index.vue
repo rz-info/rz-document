@@ -36,10 +36,6 @@ export default {
         }
       ]
     };
-  },
-  methods: {},
-  mounted() {
-    this.$router.push("/components/table");
   }
 };
 </script>

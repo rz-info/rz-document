@@ -1,10 +1,12 @@
 <template>
   <div class="wrapper">
-    <exampleCom>
+    <exampleCom title="列表">
       <commonTable
         :tableMap="tableMap"
         :tableData="tableData"
         :tableConfig="tableConfig"
+        @viewDetails="viewDetails"
+        @selection-change="selectChange"
       />
     </exampleCom>
     <testMD />
@@ -26,10 +28,20 @@ export default {
       tableData: {
         data: [
           {
-            authFileName: "234"
+            prop1: "No description",
+            prop2: "website",
+            prop3: "topics",
+            prop4: "provided",
+            prop5: "Releases",
+            prop6: "published"
           },
           {
-            authFileName: "234"
+            prop1: "published",
+            prop2: "passive",
+            prop3: "Releases",
+            prop4: "topics",
+            prop5: "Releases",
+            prop6: "error"
           }
         ],
         total: 2,
@@ -39,30 +51,47 @@ export default {
 
       tableMap: [
         {
+          type: "selection"
+        },
+        {
           name: "单位名称",
-          width: 300,
-          prop: "authFileName"
+          prop: "prop1",
+          align: "right"
         },
         {
           name: "回款金额",
-          prop: "authFileNsame"
+          prop: "prop2",
+          align: "left"
         },
         {
           name: "回款方式",
-          prop: "authFiledName"
+          prop: "prop3"
         },
         {
           name: "到账日期",
-          prop: "autherFileName"
+          prop: "prop4"
         },
         {
           name: "收款人",
-          prop: "authFileNqame"
+          prop: "prop5"
         },
         {
           name: "备注",
+          prop: "prop6",
+          width: 300
+        },
+        {
+          name: "操作",
           width: 300,
-          prop: "authFiletqttName"
+          template: {
+            btn: [
+              {
+                label: "查看详情",
+                style: "background: green",
+                event: "viewDetails"
+              }
+            ]
+          }
         }
       ],
       tableConfig: {
@@ -72,7 +101,18 @@ export default {
       }
     };
   },
-  computed: {}
+  methods: {
+    viewDetails() {
+      console.log("is details");
+    },
+    selectChange(val) {
+      console.log(val);
+    }
+  }
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.wrapper {
+  width: calc(100% - 1px);
+}
+</style>

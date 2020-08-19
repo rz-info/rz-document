@@ -1,10 +1,13 @@
 <template>
   <div class="wrapper">
-    <h1>示例</h1>
+    <h1>{{ title }}</h1>
+    <h2>示例</h2>
     <slot></slot>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: ["title"]
+};
 </script>
 <style lang="scss" scoped></style>

@@ -30,12 +30,11 @@ export default {
         },
         {
           label: "class",
-          path: "/"
+          path: "/classes"
         }
       ]
     };
-  },
-  methods: {}
+  }
 };
 </script>
 <style lang="scss" scoped>
