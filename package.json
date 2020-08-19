@@ -10,7 +10,11 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
+    "hyperdown": "^2.4.4",
     "normalize.css": "^8.0.1",
+    "prismjs": "^1.21.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
     "vue": "^2.6.11",
     "vue-router": "^3.4.3"
   },
