@@ -1,13 +1,13 @@
 <template>
   <el-dialog class="rz-eject " :show-close="EjectConfig.showClose" close-on-press-escape append-to-body
-    close-on-click-modal :visible="EjectConfig.status" :width="EjectConfig.width" :before-close="closeChange">
-    <div class="rz-eject-title" v-if="!EjectConfig.hideTitle">
-      {{ EjectConfig.title }}
+    close-on-click-modal :visible="EjectConfig.EjectStatus" :width="EjectConfig.EjectWidth" :before-close="closeChange">
+    <div class="rz-eject-title" v-if="!EjectConfig.EjectTitHide">
+      {{ EjectConfig.EjectTit }}
     </div>
     <div class="rz-eject-content">
       <slot name="EjectContent"></slot>
     </div>
-    <div class="rz-eject-footer" v-if="EjectConfig.showTools">
+    <div class="rz-eject-footer" v-if="EjectConfig.ToolShow">
       <div class="fl fl-jc-btn rz-eject-footer-btn-wrap">
         <el-button type="danger" class="rz-eject-footer-btn" @click="cancelChange">
           {{EjectConfig.leftBtnText ? EjectConfig.leftBtnText : "重置"}}</el-button>
@@ -29,11 +29,11 @@
         required: true,
         default: () => {
           return {
-            status: false, // 控制弹窗显示状态
-            width: '500px', // 弹窗宽度, 单位可为 px 或 % 
-            title: '弹窗标题',
-            hideTitle: false, // 是否隐藏 title, 默认false
-            showTools: false, // 是否显示工具栏, 默认 false
+            EjectStatus: false, // 控制弹窗显示状态
+            EjectWidth: '500px', // 弹窗宽度, 单位可为 px 或 % 
+            EjectTit: '弹窗标题',
+            EjectTitHide: false, // 是否隐藏 title, 默认false
+            ToolShow: false, // 是否显示工具栏, 默认 false
             showClose: true, // 是否显示关闭按钮, 默认 true
             leftBtnText: '重置', // 左侧按钮文本, 默认 重置
             rightBtnText: '确认', // 右侧按钮文本, 默认 确认
@@ -52,7 +52,7 @@
       },
       closeChange() {
         this.$emit("closeChange");
-        this.EjectConfig.status = false;
+        this.EjectConfig.EjectStatus = false;
       },
       cancelChange() {
         this.$emit("cancelChange", true);

@@ -1,0 +1,166 @@
+/*
+ * @Author: 李咪
+ * @Date: 2020-02-24 09:28:37
+ * @LastEditTime: 2020-05-29 11:41:42
+ * @LastEditors: Please set LastEditors
+ * @Version: 
+ * @Description: 公共样式
+ * @FilePath: \rz_operation\src\styles\index.scss
+ */
+
+// @import './variables.scss'; // Already imported in style-resources-loader
+// @import './mixins.scss'; // Already imported in style-resources-loader
+@import "./transition.scss";
+@import "./svgicon.scss";
+
+/* Global scss */
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue,
+    Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+a,
+a:focus,
+a:hover {
+  color: inherit;
+  outline: none;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+.app-container {
+  padding: 20px;
+}
+
+//光标小手
+.pointer {
+  cursor: pointer;
+}
+
+//文本溢出隐藏
+.textOF {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// flex 类
+.fl {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.fl-auto {
+  flex: auto;
+}
+
+.fl-col {
+  flex-direction: column;
+}
+
+.fl-1 {
+  flex: 1;
+}
+
+.fl-2 {
+  flex: 2;
+}
+
+.fl-3 {
+  flex: 3;
+}
+
+.fl-wrap {
+  flex-wrap: wrap;
+}
+
+.fl-jc-ctr {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.fl-jc-str {
+  -webkit-box-pack: flex-start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: flex-start;
+  justify-content: flex-start;
+}
+
+.fl-jc-arround {
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+}
+
+.fl-jc-end {
+  -webkit-box-pack: flex-end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: flex-end;
+  justify-content: flex-end;
+}
+
+.fl-jc-btn {
+  -webkit-box-pack: space-between;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: space-between;
+  justify-content: space-between;
+}
+
+.fl-ai-ctr {
+  -webkit-box-align: center;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.fl-ai-start {
+  -webkit-box-align: flex-start;
+  -moz-align-items: flex-start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+
+.fl-ai-end {
+  -webkit-box-align: flex-end;
+  -moz-align-items: flex-end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+.hideWrap {
+  position: fixed;
+  top: -1000px;
+  left: -1000px;
+  opacity: 0;
+}

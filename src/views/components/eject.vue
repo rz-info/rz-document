@@ -33,17 +33,17 @@
     data() {
       return {
         openEConf: { //顶部按钮弹框
-          status: false,
-          width: '600px',
-          title: '一级弹窗',
-          showTools: true,
+          EjectStatus: false,
+          EjectWidth: '600px',
+          EjectTit: '一级弹窗',
+          ToolShow: true,
           leftBtnText: '取消',
         },
         openEConf2: { //顶部按钮弹框
-          status: false,
-          width: '400px',
-          title: '二级弹窗',
-          showTools: true,
+          EjectStatus: false,
+          EjectWidth: '400px',
+          EjectTit: '二级弹窗',
+          ToolShow: true,
           rightBtnText: '关闭弹窗'
         }
       }
@@ -52,26 +52,26 @@
       openEject(type) {
         console.log('打开弹窗', type);
         if (type == 1) {
-          this.openEConf.status = true;
+          this.openEConf.EjectStatus = true;
         } else {
-          this.openEConf2.status = true;
+          this.openEConf2.EjectStatus = true;
         }
       },
       openECancel(type) {
         console.log('点击左侧按钮', type);
         if (type == 1) {
-          this.openEConf.status = false;
+          this.openEConf.EjectStatus = false;
 
         } else {
-          this.openEConf2.status = false;
+          this.openEConf2.EjectStatus = false;
         }
       },
       openEConfirm(type) {
         console.log('点击右侧按钮', type);
         if (type == 1) {
-          this.openEConf.status = false;
+          this.openEConf.EjectStatus = false;
         } else {
-          this.openEConf2.status = false;
+          this.openEConf2.EjectStatus = false;
         }
       },
       closeChange(type) {

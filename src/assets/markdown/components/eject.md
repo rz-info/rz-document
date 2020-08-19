@@ -18,22 +18,24 @@
 ```js
 export default {
   components: {
+    testMD,
     Eject,
+    exampleCom
   },
   data() {
     return {
-      openEConf: { // 一级弹窗
-        status: false,
-        width: '600px',
-        title: '一级弹窗',
-        showTools: true,
+      openEConf: { //顶部按钮弹框
+        EjectStatus: false,
+        EjectWidth: '600px',
+        EjectTit: '一级弹窗',
+        ToolShow: true,
         leftBtnText: '取消',
       },
-      openEConf2: { // 二级弹窗
-        status: false,
-        width: '400px',
-        title: '二级弹窗',
-        showTools: true,
+      openEConf2: { //顶部按钮弹框
+        EjectStatus: false,
+        EjectWidth: '400px',
+        EjectTit: '二级弹窗',
+        ToolShow: true,
         rightBtnText: '关闭弹窗'
       }
     }
@@ -42,26 +44,26 @@ export default {
     openEject(type) {
       console.log('打开弹窗', type);
       if (type == 1) {
-        this.openEConf.status = true;
+        this.openEConf.EjectStatus = true;
       } else {
-        this.openEConf2.status = true;
+        this.openEConf2.EjectStatus = true;
       }
     },
     openECancel(type) {
-      console.log('点击左侧按钮',type);
+      console.log('点击左侧按钮', type);
       if (type == 1) {
-        this.openEConf.status = false;
+        this.openEConf.EjectStatus = false;
 
       } else {
-        this.openEConf2.status = false;
+        this.openEConf2.EjectStatus = false;
       }
     },
     openEConfirm(type) {
-      console.log('点击右侧按钮',type);
+      console.log('点击右侧按钮', type);
       if (type == 1) {
-        this.openEConf.status = false;
+        this.openEConf.EjectStatus = false;
       } else {
-        this.openEConf2.status = false;
+        this.openEConf2.EjectStatus = false;
       }
     },
     closeChange(type) {
@@ -96,16 +98,18 @@ import Eject from "@/components/Common/eject.vue";
 ```js
 export default {
   data() {
-    EConfig: {
-      status: false, // 控制弹窗显示状态
-      width: '500px', // 弹窗宽度, 单位可为 px 或 % 
-      title: '弹窗标题', // 弹窗标题
-      hideTitle: false, // 是否隐藏 title, 默认false
-      showTools: false, // 是否显示工具栏, 默认 false
-      showClose: true, // 是否显示关闭按钮, 默认 true
-      leftBtnText: '重置', // 左侧按钮文本, 默认 重置
-      rightBtnText: '确认', // 右侧按钮文本, 默认 确认
-  }
+    return {
+      EConfig: {
+        EjectStatus: false, // 控制弹窗显示状态
+        EjectWidth: '500px', // 弹窗宽度, 单位可为 px 或 % 
+        EjectTit: '弹窗标题',
+        EjectTitHide: false, // 是否隐藏 title, 默认false
+        ToolShow: false, // 是否显示工具栏, 默认 false
+        showClose: true, // 是否显示关闭按钮, 默认 true
+        leftBtnText: '重置', // 左侧按钮文本, 默认 重置
+        rightBtnText: '确认', // 右侧按钮文本, 默认 确认
+      }
+    }
 }
 ```
 

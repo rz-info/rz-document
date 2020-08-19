@@ -13,8 +13,6 @@
     "hyperdown": "^2.4.4",
     "normalize.css": "^8.0.1",
     "prismjs": "^1.21.0",
-    "sass": "^1.26.10",
-    "sass-loader": "^9.0.3",
     "vue": "^2.6.11",
     "vue-router": "^3.4.3"
   },
@@ -29,6 +27,10 @@
     "eslint-plugin-vue": "^6.2.2",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
+    "style-resources-loader": "^1.3.3",
+    "vue-cli-plugin-style-resources-loader": "^0.1.4",
     "vue-template-compiler": "^2.6.11"
   }
 }
