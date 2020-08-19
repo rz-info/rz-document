@@ -23,15 +23,15 @@ export default {
       defaultActive: "/components/table",
       menuList: [
         {
-          label: "table",
+          label: "表格",
           path: "/components/table"
         },
         {
-          label: "export",
+          label: "导出",
           path: "/components/export"
         },
         {
-          label: "tag",
+          label: "标签",
           path: "/components/tag"
         }
       ]
