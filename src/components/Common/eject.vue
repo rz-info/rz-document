@@ -1,24 +1,22 @@
 <template>
-  <div class="ejectWrap">
-    <el-dialog class="ejectWrap" :show-close="EjectConfig.showClose" close-on-press-escape append-to-body
-      close-on-click-modal :visible="EjectConfig.status" :width="EjectConfig.width" :before-close="closeChange">
-      <div class="ejectHeader" v-if="!EjectConfig.hideTitle">
-        {{ EjectConfig.title }}
+  <el-dialog class="rz-eject " :show-close="EjectConfig.showClose" close-on-press-escape append-to-body
+    close-on-click-modal :visible="EjectConfig.status" :width="EjectConfig.width" :before-close="closeChange">
+    <div class="rz-eject-title" v-if="!EjectConfig.hideTitle">
+      {{ EjectConfig.title }}
+    </div>
+    <div class="rz-eject-content">
+      <slot name="EjectContent"></slot>
+    </div>
+    <div class="rz-eject-footer" v-if="EjectConfig.showTools">
+      <div class="fl fl-jc-btn rz-eject-footer-btn-wrap">
+        <el-button type="danger" class="rz-eject-footer-btn" @click="cancelChange">
+          {{EjectConfig.leftBtnText ? EjectConfig.leftBtnText : "重置"}}</el-button>
+        <el-button type="primary" class="rz-eject-footer-btn" @click="confirmChange">
+          {{ EjectConfig.rightBtnText ? EjectConfig.rightBtnText : "确认" }}
+        </el-button>
       </div>
-      <div class="ejectContent">
-        <slot name="EjectContent"></slot>
-      </div>
-      <div class="dialogFooter" v-if="EjectConfig.showTools">
-        <div class="fl fl-jc-btn footerBtnWrap">
-          <el-button type="danger" class="btnDef" @click="cancelChange">
-            {{EjectConfig.leftBtnText ? EjectConfig.leftBtnText : "重置"}}</el-button>
-          <el-button type="primary" class="btnDef" @click="confirmChange">
-            {{ EjectConfig.rightBtnText ? EjectConfig.rightBtnText : "确认" }}
-          </el-button>
-        </div>
-      </div>
-    </el-dialog>
-  </div>
+    </div>
+  </el-dialog>
 </template>
 
 <script>
@@ -63,72 +61,58 @@
   };
 </script>
 
-<style lang="scss" scoped>
-  .ejectWrap {
+<style scoped>
+  .rz-eject  {
     position: fixed;
     width: 100%;
     top: 0;
     overflow-y: scroll;
-
-    .ejectHeader {
-      height: 50px;
-      padding: 0 20px;
-      background: #3e63b5;
-      color: #fff;
-      display: flex;
-      align-items: center;
-    }
-
-    .ejectContent {
-      padding: 0 60px;
-      line-height: 16px;
-      font-size: 14px;
-      margin: 20px 0;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      .promiseContent {
-        margin-top: 28px;
-        font-weight: bold;
-      }
-    }
-
-    .btnDef {
-      width: 110px;
-      height: 40px;
-    }
-
-    .footerBtnWrap {
-      display: flex;
-      justify-content: space-between;
-      width: 350px;
-    }
-
-    .dialogFooter {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 88px;
-      background: #eaeaea;
-    }
   }
-</style>
-<style>
-  .ejectWrap .el-dialog__header,
-  .ejectWrap .el-dialog__body {
+
+  .rz-eject-title {
+    height: 50px;
+    padding: 0 20px;
+    background: #3e63b5;
+    color: #fff;
+    display: flex;
+    align-items: center;
+  }
+
+  .rz-eject-content {
+    padding: 0 60px;
+    line-height: 16px;
+    font-size: 14px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .rz-eject-footer-btn {
+    width: 110px;
+    height: 40px;
+  }
+
+  .rz-eject-footer-btn-wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+  }
+
+  .rz-eject-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 88px;
+    background: #eaeaea;
+  }
+
+  .rz-eject >>> .el-dialog__header,
+  .rz-eject >>> .el-dialog__body {
     padding: 0;
   }
 
-  .el-dialog__close.el-icon.el-icon-close {
+  .rz-eject >>> .el-dialog__close.el-icon.el-icon-close {
     color: #fff;
-  }
-
-  .ejectWrap {
-    position: relative;
-    width: 100%;
-    top: 0;
-    overflow-y: scroll;
   }
 </style>

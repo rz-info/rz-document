@@ -1,6 +1,6 @@
 <template>
-  <div class="tableArea">
-    <el-table class="operColumStyle" :data="tableData.data" border style="width: 100%;text-align:left"
+  <div class="rz-table">
+    <el-table class="rz-table-content" :data="tableData.data" border style="width: 100%;text-align:left"
       :header-cell-style="headerStyle" :header-row-style="headerRowStyle" @selection-change="handleSelectionChange">
       <el-table-column v-if="!tableConfig.hideIndex" type="index" align="center" label="序号" :key="Math.random()" />
       <div v-for="(item, index) in tableMap" :key="index">
@@ -79,16 +79,12 @@
 </script>
 
 <style scoped>
-  /* .operColumStyle>>>td {
-    padding: 0 !important;
-  } */
-
-  .tableArea {
+  .rz-table {
     width: 100%;
     height: 100%;
   }
 
-  .operColumStyle>>>.el-table__row td:last-child .cell {
+  .rz-table-content>>>.el-table__row td:last-child .cell {
     padding: 0 !important;
   }
 </style>
