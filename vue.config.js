@@ -7,7 +7,7 @@ function resolve(dir) {
 module.exports = {
   lintOnSave: false,
   outputDir: "docs",
-  publicPath: "rz-info.github.io/rz-document/",
+  publicPath: "/rz-document",
   chainWebpack: config => {
     config.resolve.alias.set("@", resolve("src")); // key,value自行定义，比如.set('@@', resolve('src/components'))
   },
