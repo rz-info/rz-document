@@ -1,7 +1,7 @@
 # rz-document
 
 ## Project URL
-[https://themayy.github.io/rz-document.github.io/](https://themayy.github.io/rz-document.github.io/)
+[https://rz-info.github.io/rz-document/](https://rz-info.github.io/rz-document/)
 
 ## Project setup
 ```
