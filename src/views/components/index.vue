@@ -1,65 +1,64 @@
 <template>
   <div class="com-wrapper">
     <div class="slide">
-      <doc-nav
-        class="el-menu-vertical-demo"
-        :defaultActive="defaultActive"
-        :menuList="menuList"
-      />
+      <doc-nav class="el-menu-vertical-demo" :defaultActive="defaultActive" :menuList="menuList" />
     </div>
     <router-view class="container" />
   </div>
 </template>
 <script>
-import docNav from "@/components/documentComponents/navigation.vue";
+  import docNav from "@/components/documentComponents/navigation.vue";
 
-export default {
-  components: {
-    docNav
-  },
-  data() {
-    return {
-      defaultActive: "/components/table",
-      menuList: [
-        {
-          label: "表格",
-          path: "/components/table"
-        },
-        {
-          label: "导出",
-          path: "/components/export"
-        },
-        {
-          label: "标签",
-          path: "/components/tag"
-        },
-        {
-          label: "弹窗",
-          path: "/components/eject"
-        }
-      ]
-    };
-  }
-};
+  export default {
+    components: {
+      docNav
+    },
+    data() {
+      return {
+        defaultActive: "/components/table",
+        menuList: [{
+            label: "表格",
+            path: "/components/table"
+          },
+          {
+            label: "导出",
+            path: "/components/export"
+          },
+          {
+            label: "标签",
+            path: "/components/tag"
+          },
+          {
+            label: "弹窗",
+            path: "/components/eject"
+          },
+          {
+            label: "按钮",
+            path: "/components/button"
+          }
+        ]
+      };
+    }
+  };
 </script>
 <style lang="scss" scoped>
-.com-wrapper {
-  height: 100%;
-  display: flex;
-
-  .slide {
-    width: 200px;
+  .com-wrapper {
     height: 100%;
+    display: flex;
 
-    .el-menu-vertical-demo {
+    .slide {
+      width: 200px;
       height: 100%;
+
+      .el-menu-vertical-demo {
+        height: 100%;
+      }
+    }
+
+    .container {
+      flex: 1;
+      padding: 20px;
+      overflow: auto;
     }
   }
-
-  .container {
-    flex: 1;
-    padding: 20px;
-    overflow: auto;
-  }
-}
 </style>
