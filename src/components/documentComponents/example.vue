@@ -2,7 +2,7 @@
   <div class="wrapper">
     <h1>{{ title }}</h1>
     <template v-for="(item,index) in this.$scopedSlots">
-      <h2 :key="index">示例{{index}}</h2>
+      <h2 :key="index">示例{{index == 'default' ? '' : index}}</h2>
       <slot :name="index"></slot>
     </template>
   </div>
