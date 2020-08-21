@@ -2,6 +2,7 @@
   <div class="rz-table">
     <el-table class="rz-table-content" :data="tableData.data" border style="width: 100%;text-align:left"
       :header-cell-style="headerStyle" :header-row-style="headerRowStyle" @selection-change="handleSelectionChange">
+      <el-table-column v-if="tableConfig.showCheckBox" type="selection" align="center" />
       <el-table-column v-if="!tableConfig.hideIndex" type="index" align="center" label="序号" :key="Math.random()" />
       <div v-for="(item, index) in tableMap" :key="index">
         <el-table-column v-if="item.type == 'selection'" type="selection" align="center" />
@@ -9,13 +10,13 @@
           :width="item.width">
           <template slot-scope="scope">
             <div v-if="item.template">
-              <el-button v-for="btn in item.template.btn" :key="btn.label" :type="btn.type || 'primary'"
-                :style="btn.style" :size="btn.size || 'mini'" @click="emitEvent(btn.event, scope.row)"
-                v-text="btn.label" />
+              <slot name="btn" :rowData="scope.row" :template="item.template" :scope="scope">
+                <el-button v-for="btn in item.template.btn" :key="btn.label" :type="btn.type || 'primary'"
+                  :style="btn.style" :size="btn.size || 'mini'" @click="emitEvent(btn.event, scope.row)"
+                  v-text="btn.label" />
+              </slot>
             </div>
-            <div v-else>
-              <span>{{ scope.row[item.prop] }}</span>
-            </div>
+            <span v-else>{{ scope.row[item.prop] }}</span>
           </template>
         </el-table-column>
       </div>
@@ -47,7 +48,8 @@
         default: () => {
           return {
             hidePage: false, // 隐藏分页
-            hideIndex: false // 隐藏序号列
+            hideIndex: false, // 隐藏序号列
+            showCheckBox: false // 第一列显示复选框
           };
         }
       }
