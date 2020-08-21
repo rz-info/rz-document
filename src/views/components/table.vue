@@ -1,9 +1,5 @@
 <template>
   <div class="wrapper">
-    <template>
-      Scroll down to see the bottom-right button.
-      <el-backtop target='.wrapper'></el-backtop>
-    </template>
     <exampleCom title="列表">
       <template v-slot:1>
         <commonTable :tableMap="example1.tableMap" :tableData="example1.tableData" :tableConfig="example1.tableConfig"
