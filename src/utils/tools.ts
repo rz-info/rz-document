@@ -280,6 +280,17 @@ export function unique(arr: any, u_key: string) {
 //   name: '',
 //   prop: ''
 // }]
+
+/**
+ * @description: 生成调用导出接口所需参数
+ * @param list: any[{
+                  name: '',
+                  prop: ''
+                }], 
+          ignoreList: any[] 
+ * @return: 
+ * @author: 张魁堡
+ */
 export function createExportConfig(list: any[], ignoreList: any[] = []) {
   const reqArr = [];
   list.forEach((ele, i) => {
@@ -291,4 +302,23 @@ export function createExportConfig(list: any[], ignoreList: any[] = []) {
     })
   })
   return reqArr;
+}
+
+
+export default {
+  getUrlParam,
+  sort,
+  deWeight,
+  diffArr,
+  cloneObj,
+  handelMobile,
+  formatDate,
+  addDate,
+  Debounce,
+  throttle,
+  formatterSizeUnit,
+  getNowDate,
+  getNowDateHour,
+  unique,
+  createExportConfig,
 }

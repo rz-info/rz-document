@@ -1,9 +1,9 @@
 <template>
   <div class="rz-table">
-    <el-table class="rz-table-content" :data="tableData.data" border style="width: 100%;text-align:left"
-      :header-cell-style="headerStyle" :header-row-style="headerRowStyle" @selection-change="handleSelectionChange">
+    <el-table ref="rzTable" class="rz-table-content" :data="tableData.data" border style="width: 100%;text-align:left"
+      :header-cell-style="headerStyle"  @selection-change="handleSelectionChange">
       <el-table-column v-if="tableConfig.showCheckBox" type="selection" align="center" />
-      <el-table-column v-if="!tableConfig.hideIndex" type="index" align="center" label="序号" :key="Math.random()" />
+      <el-table-column width="50" v-if="!tableConfig.hideIndex" type="index" align="center" label="序号" :key="Math.random()" />
       <div v-for="(item, index) in tableMap" :key="index">
         <el-table-column v-if="item.type == 'selection'" type="selection" align="center" />
         <el-table-column v-else :prop="item.prop" :type="item.type" :align="item.align || 'center'" :label="item.name"
@@ -16,7 +16,9 @@
                   v-text="btn.label" />
               </slot>
             </div>
-            <span v-else>{{ scope.row[item.prop] }}</span>
+            <div v-else>
+              <span>{{ scope.row[item.prop] }}</span>
+            </div>
           </template>
         </el-table-column>
       </div>
@@ -76,8 +78,12 @@
       handleSelectionChange(data) {
         this.$emit("selection-change", data);
       }
+    },
+    updated() {
+      this.$refs.rzTable.doLayout();
     }
   };
+
 </script>
 
 <style scoped>
@@ -89,4 +95,9 @@
   .rz-table-content>>>.el-table__row td:last-child .cell {
     padding: 0 !important;
   }
+
+  .el-table .cell {
+    height: 32px !important;
+  }
+
 </style>
