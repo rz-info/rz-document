@@ -12,9 +12,9 @@
           <template slot-scope="scope">
             <div v-if="item.template">
               <slot name="btn" :rowData="scope.row" :template="item.template" :scope="scope">
-                <el-button v-for="btn in item.template.btn" :key="btn.label" :type="btn.type || 'primary'"
-                  :style="btn.style" :size="btn.size || 'mini'" @click="emitEvent(btn.event, scope.row)"
-                  v-text="btn.label" />
+                <el-button class="rz-table-btn" v-for="btn in item.template.btn" :key="btn.label"
+                  :type="btn.type || 'primary'" :style="btn.style" :size="btn.size || 'mini'"
+                  @click="emitEvent(btn.event, scope.row)" :disabled="disabledBtn(btn,scope.row)" v-text="btn.label" />
               </slot>
             </div>
             <div v-else>
@@ -78,13 +78,20 @@
       // 复选框
       handleSelectionChange(data) {
         this.$emit("selection-change", data);
+      },
+      // 隐藏按钮
+      disabledBtn(btn, data) {
+        if (typeof btn.disabled == 'function') {
+          return btn.disabled(data);
+        } else {
+          return false;
+        }
       }
     },
     updated() {
       this.$refs.rzTable.doLayout();
     }
   };
-
 </script>
 
 <style scoped>
@@ -101,4 +108,11 @@
     height: 32px !important;
   }
 
+  .rz-table-btn {
+    border: none;
+  }
+
+  .rz-table-btn[disabled] {
+    opacity: .4;
+  }
 </style>

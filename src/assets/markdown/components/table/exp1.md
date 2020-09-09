@@ -1,7 +1,7 @@
 ## 示例一代码
 
 ```html
-<commonTable :tableMap="tableMap" :tableData="tableData" :tableConfig="tableConfig" @viewDetails="viewDetails" />
+<commonTable :tableMap="tableMap" :tableData="tableData" :tableConfig="tableConfig" @viewDetails="viewDetails" @edit="edit" @selection-change="selectChange" />
 ```
 
 ```js
@@ -21,6 +21,11 @@ export default {
               prop1: "published",
               prop2: "passive",
               prop3: "Releases",
+            },
+            {
+              prop1: "privade",
+              prop2: "这一行将隐藏编辑按钮",
+              prop3: "hideBtn",
             }
           ],
           total: 2,
@@ -29,17 +34,14 @@ export default {
         },
 
         tableMap: [{
-            type: "selection"
-          },
-          {
             name: "单位名称",
-            prop: "prop1"
-            align: 'right',
+            prop: "prop1",
+            align: "right"
           },
           {
             name: "回款金额",
             prop: "prop2",
-            align: 'left',
+            align: "left"
           },
           {
             name: "回款方式",
@@ -50,9 +52,16 @@ export default {
             width: 300,
             template: {
               btn: [{
-                label: '查看详情',
-                style: 'background: green',
-                event: 'viewDetails'
+                label: "查看详情",
+                style: "background: green;",
+                event: "viewDetails"
+              },{
+                label: "编辑",
+                style: "background: blue;",
+                event: "edit",
+                disabled(rowData) {
+                  return rowData.prop3 == 'hideBtn'
+                }
               }]
             }
           }

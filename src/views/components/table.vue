@@ -1,8 +1,8 @@
 <template>
-  <zTitle class="wrapper" level="1" text="表格">
+  <zTitle class="wrapper" level="1" text="列表">
     <exampleCom title="示例一">
       <commonTable :tableMap="example1.tableMap" :tableData="example1.tableData" :tableConfig="example1.tableConfig"
-        @viewDetails="viewDetails" @selection-change="selectChange" />
+        @viewDetails="viewDetails" @edit="edit" @selection-change="selectChange" />
       <template v-slot:document>
         <exp1 />
       </template>
@@ -22,7 +22,7 @@
       </template>
     </exampleCom>
     <exampleCom title="示例三">
-      <h4>使用slot自定义表格内容</h4>
+      <h4>使用slot自定义列表内容</h4>
       <commonTable :tableMap="example3.tableMap" :tableData="example3.tableData" @editEject="editEject">
         <template v-slot:btn="{ template, scope }">
           <template v-for="(item,key) in template">
@@ -59,14 +59,17 @@
     },
     methods: {
       viewDetails() {
-        console.log("is details");
+        this.$message.success('点击了查看详情')
+      },
+      edit() {
+        this.$message.success('点击了编辑')
       },
       selectChange(val) {
         console.log(val);
       }
     }
   }
-  // 示例1表格配置
+  // 示例1列表配置
   const example1 = {
     tableData: {
       data: [{
@@ -78,6 +81,11 @@
           prop1: "published",
           prop2: "passive",
           prop3: "Releases",
+        },
+        {
+          prop1: "privade",
+          prop2: "这一行将隐藏编辑按钮",
+          prop3: "hideBtn",
         }
       ],
       total: 2,
@@ -105,8 +113,15 @@
         template: {
           btn: [{
             label: "查看详情",
-            style: "background: green",
+            style: "background: green;",
             event: "viewDetails"
+          },{
+            label: "编辑",
+            style: "background: blue;",
+            event: "edit",
+            disabled(rowData) {
+              return rowData.prop3 == 'hideBtn'
+            }
           }]
         }
       }
@@ -141,7 +156,7 @@
       }
     }
   }
-  // 示例2表格配置
+  // 示例2列表配置
   const example2 = {
     tableData: {
       data: [{

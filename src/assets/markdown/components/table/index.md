@@ -28,7 +28,10 @@ export default {
           btn: [{
             label: '查看详情', // 按钮文本
             style: 'background: green',
-            event: 'viewDetails' // 按钮事件(需在父级定义同名函数并当做自定义事件传入表格组件)
+            event: 'viewDetails', // 按钮事件(需在父级定义同名函数并当做自定义事件传入表格组件)
+            disabled(data) { // 是否禁用按钮, 接收一个参数: 当前行数据, 没有该函数时默认不禁用
+              return data.name == '单位名称';
+            }
           }]
         }
       }

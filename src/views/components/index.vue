@@ -11,7 +11,7 @@
     data() {
       return {
         menuList: [{
-            label: "表格",
+            label: "列表",
             path: "/components/table"
           },
           {
