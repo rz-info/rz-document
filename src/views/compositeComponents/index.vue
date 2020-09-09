@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <secondLayer :defaultActive="defaultActive" :menuList="menuList" />
+    <secondLayer :menuList="menuList" />
   </div>
 </template>
 <script>

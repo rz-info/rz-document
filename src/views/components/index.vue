@@ -1,5 +1,5 @@
 <template>
-  <secondLayer :defaultActive="defaultActive" :menuList="menuList"/>
+  <secondLayer :menuList="menuList"/>
 </template>
 <script>
   import secondLayer from '@/components/documentComponents/secondLayer'
@@ -10,7 +10,6 @@
     },
     data() {
       return {
-        defaultActive: "/components/table",
         menuList: [{
             label: "表格",
             path: "/components/table"

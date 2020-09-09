@@ -13,7 +13,12 @@
     components: {
       docNav
     },
-    props: ['defaultActive','menuList'],
+    computed: {
+      defaultActive() {
+        return this.$route.path
+      }
+    },
+    props: ['menuList'],
   };
 </script>
 <style lang="scss" scoped>

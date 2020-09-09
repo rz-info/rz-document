@@ -12,9 +12,6 @@
     },
     data() {
       return {
-        activeIndex: "1",
-
-        defaultActive: "/components",
         menuList: [{
             label: "组件",
             path: "/components"
@@ -36,6 +33,11 @@
           }
         ]
       };
+    },
+    computed: {
+      defaultActive() {
+        return this.$route.matched[1].path
+      }
     }
   };
 </script>
