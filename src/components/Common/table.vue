@@ -1,9 +1,10 @@
 <template>
   <div class="rz-table">
     <el-table ref="rzTable" class="rz-table-content" :data="tableData.data" border style="width: 100%;text-align:left"
-      :header-cell-style="headerStyle"  @selection-change="handleSelectionChange">
+      :header-cell-style="headerStyle" @selection-change="handleSelectionChange">
       <el-table-column v-if="tableConfig.showCheckBox" type="selection" align="center" />
-      <el-table-column width="50" v-if="!tableConfig.hideIndex" type="index" align="center" label="序号" :key="Math.random()" />
+      <el-table-column width="50" v-if="!tableConfig.hideIndex" type="index" align="center" label="序号"
+        :key="Math.random()" />
       <div v-for="(item, index) in tableMap" :key="index">
         <el-table-column v-if="item.type == 'selection'" type="selection" align="center" />
         <el-table-column v-else :prop="item.prop" :type="item.type" :align="item.align || 'center'" :label="item.name"
@@ -17,7 +18,7 @@
               </slot>
             </div>
             <div v-else>
-              <span>{{ scope.row[item.prop] }}</span>
+              <span :title="scope.row[item.title]">{{ scope.row[item.prop] }}</span>
             </div>
           </template>
         </el-table-column>

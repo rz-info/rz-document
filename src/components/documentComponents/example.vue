@@ -1,10 +1,14 @@
 <template>
   <div class="wrapper">
-    <h1>{{ title }}</h1>
-    <template v-for="(item,index) in this.$scopedSlots">
-      <h2 :key="index">示例{{index == 'default' ? '' : index}}</h2>
-      <slot :name="index"></slot>
-    </template>
+    <h2>{{ title }}</h2>
+    <slot />
+    <div style="margin-top: 20px;">
+      <el-collapse>
+        <el-collapse-item title="查看代码">
+          <slot name="document" />
+        </el-collapse-item>
+      </el-collapse>
+    </div>
   </div>
 </template>
 <script>
@@ -12,4 +16,3 @@
     props: ["title"]
   };
 </script>
-<style lang="scss" scoped></style>

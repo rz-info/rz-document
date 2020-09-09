@@ -1,42 +1,52 @@
 <template>
-  <div class="wrapper">
-    <exampleCom title="列表">
-      <template v-slot:1>
-        <commonTable :tableMap="example1.tableMap" :tableData="example1.tableData" :tableConfig="example1.tableConfig"
-          @viewDetails="viewDetails" @selection-change="selectChange" />
-      </template>
-      <template v-slot:2>
-        <h4>使用slot重写按钮</h4>
-        <p>需求：在操作列中, 一个按钮在不同状态下显示不同状态</p>
-        <commonTable :tableMap="example2.tableMap" :tableData="example2.tableData" @editEject="editEject">
-          <template v-slot:btn="{ rowData, template }">
-            <el-button v-for="btn in template.btn" :key="btn.label" :type="btn.type || 'primary'"
-              :style="rowData.isEdit ? btn.style: {'background':'red'}" :size="btn.size || 'mini'"
-              @click="vmSelf[btn.event](rowData)" v-text="getBtnLabel(rowData, btn)" />
-          </template>
-        </commonTable>
-      </template>
-      <template v-slot:3>
-        <h4>使用slot自定义表格内容</h4>
-        <commonTable :tableMap="example3.tableMap" :tableData="example3.tableData" @editEject="editEject">
-          <template v-slot:btn="{ rowData, template, scope }">
-            <template v-for="(item,key) in template">
-              <el-input :key="key" v-if="key == 'input'" v-model="example3.input[scope.$index]" placeholder="请输入内容">
-              </el-input>
-              <el-select :key="key" v-if="key == 'select'" v-model="example3.value[scope.$index]" placeholder="请选择">
-                <el-option v-for="item in example3.options" :key="item.value" :label="item.label" :value="item.value" />
-              </el-select>
-            </template>
-          </template>
-        </commonTable>
+  <zTitle class="wrapper" level="1" text="表格">
+    <exampleCom title="示例一">
+      <commonTable :tableMap="example1.tableMap" :tableData="example1.tableData" :tableConfig="example1.tableConfig"
+        @viewDetails="viewDetails" @selection-change="selectChange" />
+      <template v-slot:document>
+        <exp1 />
       </template>
     </exampleCom>
-
+    <exampleCom title="示例二">
+      <h4>使用slot重写按钮</h4>
+      <p>需求：在操作列中, 一个按钮在不同状态下显示不同状态</p>
+      <commonTable :tableMap="example2.tableMap" :tableData="example2.tableData" @editEject="editEject">
+        <template v-slot:btn="{ rowData, template }">
+          <el-button v-for="btn in template.btn" :key="btn.label" :type="btn.type || 'primary'"
+            :style="rowData.isEdit ? btn.style: {'background':'red'}" :size="btn.size || 'mini'"
+            @click="vmSelf[btn.event](rowData)" v-text="getBtnLabel(rowData, btn)" />
+        </template>
+      </commonTable>
+      <template v-slot:document>
+        <exp2 />
+      </template>
+    </exampleCom>
+    <exampleCom title="示例三">
+      <h4>使用slot自定义表格内容</h4>
+      <commonTable :tableMap="example3.tableMap" :tableData="example3.tableData" @editEject="editEject">
+        <template v-slot:btn="{ template, scope }">
+          <template v-for="(item,key) in template">
+            <el-input :key="key" v-if="key == 'input'" v-model="example3.input[scope.$index]" placeholder="请输入内容">
+            </el-input>
+            <el-select :key="key" v-if="key == 'select'" v-model="example3.value[scope.$index]" placeholder="请选择">
+              <el-option v-for="item in example3.options" :key="item.value" :label="item.label" :value="item.value" />
+            </el-select>
+          </template>
+        </template>
+      </commonTable>
+      <template v-slot:document>
+        <exp3 />
+      </template>
+    </exampleCom>
     <testMD />
-  </div>
+  </zTitle>
 </template>
 <script>
-  import testMD from "@/assets/markdown/components/table.md";
+  import testMD from "@/assets/markdown/components/table/index.md";
+  import exp1 from "@/assets/markdown/components/table/exp1.md";
+  import exp2 from "@/assets/markdown/components/table/exp2.md";
+  import exp3 from "@/assets/markdown/components/table/exp3.md";
+  
   import commonTable from "@/components/Common/table.vue";
   import exampleCom from "@/components/documentComponents/example.vue";
 
@@ -233,6 +243,9 @@
   export default {
     components: {
       testMD,
+      exp1,
+      exp2,
+      exp3,
       commonTable,
       exampleCom
     },

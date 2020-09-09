@@ -1,11 +1,11 @@
 /*
  * @Author: 李咪
  * @Date: 2020-02-05 14:58:09
- * @LastEditTime: 2020-06-24 10:46:08
+ * @LastEditTime: 2020-09-01 14:40:01
  * @LastEditors: Please set LastEditors
  * @Version:
  * @Description:js工具类
- * @FilePath: \v2.0.1\src\utils\tools.ts
+ * @FilePath: \rz-document\src\utils\tools.ts
  */
 
 /**
@@ -280,17 +280,6 @@ export function unique(arr: any, u_key: string) {
 //   name: '',
 //   prop: ''
 // }]
-
-/**
- * @description: 生成调用导出接口所需参数
- * @param list: any[{
-                  name: '',
-                  prop: ''
-                }], 
-          ignoreList: any[] 
- * @return: 
- * @author: 张魁堡
- */
 export function createExportConfig(list: any[], ignoreList: any[] = []) {
   const reqArr = [];
   list.forEach((ele, i) => {
@@ -304,21 +293,60 @@ export function createExportConfig(list: any[], ignoreList: any[] = []) {
   return reqArr;
 }
 
+// 清空对象/数组, 一参为目标对象, 二参为true时将其重置为空, 否则只把数据修改为''
+export function clearObj(obj: any, empty: Boolean = false) {
+  if (Array.isArray(obj)) {
+    if (empty) {
+      obj.length = 0;
+    } else {
+      obj.forEach(ele => {
+        ele = '';
+      })
+    }
+  } else {
+    if (empty) {
+      for (let key in obj) {
+        delete obj[key];
+      }
+    } else {
+      for (let key in obj) {
+        obj[key] = '';
+      }
+    }
+  }
+}
 
-export default {
-  getUrlParam,
-  sort,
-  deWeight,
-  diffArr,
-  cloneObj,
-  handelMobile,
-  formatDate,
-  addDate,
-  Debounce,
-  throttle,
-  formatterSizeUnit,
-  getNowDate,
-  getNowDateHour,
-  unique,
-  createExportConfig,
+//身份证号掩码：
+export function idCardMask(str, frontLen, endLen) {
+  var len = str.length - frontLen - endLen;
+  var xing = '';
+  for (let i = 0; i < len; i++) {
+    xing += '*';
+  }
+  return str.substring(0, frontLen) + xing + str.substring(str.length - endLen);
+}
+
+// 下载导出内容
+export function downloadFile(data, config = {}) {
+  const aLink = document.createElement("a");
+  let blob = new Blob([data], {
+    type: 'application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+  })
+  aLink.href = URL.createObjectURL(blob);
+  aLink.download = (config as any).name;
+  document.body.appendChild(aLink);
+  aLink.click();
+  document.body.removeChild(aLink);
+}
+
+export function getMaxZIndex() {
+  let maxZ = 0;
+  [...document.querySelectorAll("*")].forEach(ele => {
+    const elStyle = (ele as any).style;
+    const zIndex = parseInt(elStyle['z-index']);
+    if (elStyle['position'] != 'static' && !isNaN(zIndex)) {
+      maxZ = Math.max(maxZ, zIndex);
+    }
+  })
+  return maxZ;
 }
