@@ -1,19 +1,26 @@
 <template>
-  <secondLayer :menuList="menuList" />
+  <div class="wrapper">
+    <secondLayer :menuList="menuList" />
+  </div>
 </template>
 <script>
+
   import secondLayer from '@/components/documentComponents/secondLayer'
   import {
-    componentsMenuList
+    projectIssuesMenuList
   } from "@/navConfig"
+
   export default {
     components: {
       secondLayer
     },
     data() {
       return {
-        menuList: componentsMenuList
+        defaultActive: "/components/table",
+        menuList: projectIssuesMenuList
       };
     }
-  };
+  }
 </script>
+<style lang='scss' scoped>
+</style>

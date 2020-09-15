@@ -1,11 +1,11 @@
 <template>
   <zTitle class="wrapper" level="1" text="弹窗">
-    <exampleCom title="">
+    <zExample title="">
       <el-button type="primary" @click="openEject(1)">打开弹窗</el-button>
       <template v-slot:document>
         <exp1 />
       </template>
-    </exampleCom>
+    </zExample>
     <testMD />
 
     <Eject :EjectConfig="openEConf" @closeChange="closeChange(1)" @cancelChange="openECancel(1)"
@@ -26,7 +26,6 @@
   import testMD from "@/assets/markdown/components/eject/index.md";
   import exp1 from "@/assets/markdown/components/eject/exp1.md";
 
-  import exampleCom from "@/components/documentComponents/example.vue";
   import Eject from "@/components/Common/eject.vue";
 
   export default {
@@ -34,7 +33,6 @@
       testMD,
       exp1,
       Eject,
-      exampleCom
     },
     data() {
       return {

@@ -6,32 +6,16 @@
 </template>
 <script>
   import docNav from "@/components/documentComponents/navigation.vue";
+  import {
+    topMenuList
+  } from "@/navConfig"
   export default {
     components: {
       docNav
     },
     data() {
       return {
-        menuList: [{
-            label: "组件",
-            path: "/components"
-          },
-          {
-            label: "elementUI常用组件",
-            path: "/elementUIComponents"
-          },
-          {
-            label: "复合组件",
-            path: "/compositeComponents"
-          }, {
-            label: "方法",
-            path: "/methods"
-          },
-          {
-            label: "class",
-            path: "/classes"
-          }
-        ]
+        menuList: topMenuList
       };
     },
     computed: {

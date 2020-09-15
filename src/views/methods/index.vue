@@ -18,11 +18,20 @@
     deWeight,
     cloneObj,
     handelMobile,
-    formatDate
+    formatDate,
+    getData
   } from '@/utils/tools'
   import testMD from '@/assets/markdown/methods/index.md'
 
-  console.log(formatDate(new Date()))
+  let obj = {
+    name: 'locol',
+    location: {
+      name: 'xan',
+      area: {
+        name: 'lantian'
+      }
+    }
+  }
   export default {
     components: {
       testMD

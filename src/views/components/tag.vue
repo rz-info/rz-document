@@ -1,6 +1,6 @@
 <template>
   <zTitle class="wrapper" level="1" text="标签">
-    <exampleCom title="">
+    <zExample title="">
       <h3>单个标签</h3>
       <commonTag style="justify-content:start" :tagData="tagData" />
 
@@ -11,7 +11,7 @@
       <template v-slot:document>
         <exp1 />
       </template>
-    </exampleCom>
+    </zExample>
     <testMD />
   </zTitle>
 </template>
@@ -19,7 +19,6 @@
   import testMD from "@/assets/markdown/components/tag/index.md";
   import exp1 from "@/assets/markdown/components/tag/exp1.md";
 
-  import exampleCom from "@/components/documentComponents/example.vue";
   import commonTag from "@/components/Common/tag.vue";
 
   export default {
@@ -27,7 +26,6 @@
       testMD,
       exp1,
       commonTag,
-      exampleCom
     },
     data() {
       return {

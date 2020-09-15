@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0c55c5"],{"3f84":function(e,n,t){"use strict";t.r(n);var c=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",{staticClass:"wrapper"},[e._v(" element常用组件 ")])},s=[],a={},r=a,l=t("2877"),u=Object(l["a"])(r,c,s,!1,null,"d1bfe5b4",null);n["default"]=u.exports}}]);
-//# sourceMappingURL=chunk-2d0c55c5.b74f3e9b.js.map

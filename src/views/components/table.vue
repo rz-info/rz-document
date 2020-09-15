@@ -1,13 +1,13 @@
 <template>
   <zTitle class="wrapper" level="1" text="列表">
-    <exampleCom title="示例一">
+    <zExample title="示例一">
       <commonTable :tableMap="example1.tableMap" :tableData="example1.tableData" :tableConfig="example1.tableConfig"
         @viewDetails="viewDetails" @edit="edit" @selection-change="selectChange" />
       <template v-slot:document>
         <exp1 />
       </template>
-    </exampleCom>
-    <exampleCom title="示例二">
+    </zExample>
+    <zExample title="示例二">
       <h4>使用slot重写按钮</h4>
       <p>需求：在操作列中, 一个按钮在不同状态下显示不同状态</p>
       <commonTable :tableMap="example2.tableMap" :tableData="example2.tableData" @editEject="editEject">
@@ -20,8 +20,8 @@
       <template v-slot:document>
         <exp2 />
       </template>
-    </exampleCom>
-    <exampleCom title="示例三">
+    </zExample>
+    <zExample title="示例三">
       <h4>使用slot自定义列表内容</h4>
       <commonTable :tableMap="example3.tableMap" :tableData="example3.tableData" @editEject="editEject">
         <template v-slot:btn="{ template, scope }">
@@ -37,7 +37,7 @@
       <template v-slot:document>
         <exp3 />
       </template>
-    </exampleCom>
+    </zExample>
     <testMD />
   </zTitle>
 </template>
@@ -48,7 +48,6 @@
   import exp3 from "@/assets/markdown/components/table/exp3.md";
   
   import commonTable from "@/components/Common/table.vue";
-  import exampleCom from "@/components/documentComponents/example.vue";
 
   // 示例1代码
   const mixin1 = {
@@ -262,7 +261,6 @@
       exp2,
       exp3,
       commonTable,
-      exampleCom
     },
     mixins: [mixin1, mixin2, mixin3],
   };

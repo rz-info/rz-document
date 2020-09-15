@@ -47,16 +47,32 @@ const routes = [{
       name: "componentsButton",
       component: resolve =>
         require(["@/views/components/button.vue"], resolve)
+    },
+    {
+      path: "/components/iframe",
+      name: "componentsIframe",
+      component: resolve =>
+        require(["@/views/components/iframe.vue"], resolve)
     }
     ]
   },
   {
-    path: "/elementUIComponents",
-    name: "elementUIComponents",
+    path: "/projectIssues",
+    name: "projectIssues",
+    redirect: "/projectIssues/crossDomainSpread",
     meta: {
-      title: "elementUI常用组件",
+      title: "项目问题解决方案",
     },
-    component: resolve => require(["@/views/elementUIComponents/index.vue"], resolve)
+    component: resolve => require(["@/views/projectIssues/index.vue"], resolve),
+    children: [{
+      path: "/projectIssues/crossDomainSpread", 
+      name: "projectIssuesCrossDomainSpread",
+      component: resolve => require(["@/views/projectIssues/crossDomainSpread.vue"], resolve)
+    },{
+      path: "/projectIssues/pageCache", 
+      name: "projectIssuesPageCache",
+      component: resolve => require(["@/views/projectIssues/pageCache.vue"], resolve)
+    }]
   },
   {
     path: "/compositeComponents",

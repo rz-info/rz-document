@@ -9,14 +9,13 @@
 -->
 <template>
   <div class="wrapper">
-    <exampleCom title="弹窗">
+    <zExample title="弹窗">
       <el-button type="primary" @click="openEject(1)">打开弹窗</el-button>
-    </exampleCom>
+    </zExample>
     <testMD />
   </div>
 </template>
 <script>
-  import exampleCom from "@/components/documentComponents/example.vue";
   import testMD from "@/assets/markdown/components/eject.md";
   import Eject from "@/components/Common/eject.vue";
 
@@ -24,7 +23,6 @@
     components: {
       testMD,
       Eject,
-      exampleCom
     },
     data() {
       return {

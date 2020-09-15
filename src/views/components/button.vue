@@ -1,6 +1,6 @@
 <template>
   <zTitle class="wrapper" level="1" text="按钮">
-    <exampleCom title="">
+    <zExample title="">
       <Button :buttonData="buttonData"></Button><br>
       <Button :buttonData="buttonData2"></Button> <br>
       <Button :buttonData="buttonData3"></Button> <br>
@@ -9,7 +9,7 @@
       <template v-slot:document>
         <exp1 />
       </template>
-    </exampleCom>
+    </zExample>
     <buttonMd />
 
   </zTitle>
@@ -19,11 +19,9 @@
 <script>
   import buttonMd from "@/assets/markdown/components/button/index.md";
   import exp1 from "@/assets/markdown/components/button/exp1.md";
-  import exampleCom from "@/components/documentComponents/example.vue";
   import Button from "@/components/Common/button.vue";
   export default {
     components: {
-      exampleCom,
       Button,
       buttonMd,
       exp1,

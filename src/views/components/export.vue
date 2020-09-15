@@ -1,11 +1,11 @@
 <template>
   <zTitle class="wrapper" level="1" text="导出">
-    <exampleCom title="">
+    <zExample title="">
       <commonExport :exportConfig="exportConfig" />
       <template v-slot:document>
         <exp1 />
       </template>
-    </exampleCom>
+    </zExample>
     <testMD />
   </zTitle>
 </template>
@@ -13,7 +13,6 @@
   import testMD from "@/assets/markdown/components/export/index.md";
   import exp1 from "@/assets/markdown/components/export/exp1.md";
 
-  import exampleCom from "@/components/documentComponents/example.vue";
   import commonExport from "@/components/Common/export.vue";
 
   export default {
@@ -21,7 +20,6 @@
       testMD,
       exp1,
       commonExport,
-      exampleCom
     },
     data() {
       return {

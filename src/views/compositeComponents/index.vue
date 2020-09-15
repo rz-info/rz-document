@@ -5,6 +5,9 @@
 </template>
 <script>
   import secondLayer from '@/components/documentComponents/secondLayer'
+  import {
+    compositeComponentsMenuList
+  } from "@/navConfig"
   export default {
     components: {
       secondLayer
@@ -12,11 +15,7 @@
     data() {
       return {
         defaultActive: "/components/table",
-        menuList: [{
-            label: "表单",
-            path: "/compositeComponents/form"
-          }
-        ]
+        menuList: compositeComponentsMenuList
       };
     }
 

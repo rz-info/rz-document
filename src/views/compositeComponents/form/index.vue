@@ -1,13 +1,12 @@
 <template>
-  <div class="wrapper">
-    <h1>表单</h1>
+  <zTitle class="wrapper" level="1" text="表单">
     <zTitle level="2" text="关联输入框">
       <relationCom class="form-wrap" />
     </zTitle>
     <zTitle level="2" text="级联输入框">
       <cascaderCom class="form-wrap" />
     </zTitle>
-  </div>
+  </zTitle>
 </template>
 <script>
   import zTitle from '@/components/documentComponents/zTitle'
