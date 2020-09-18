@@ -44,6 +44,10 @@ const componentsMenuList: Object[] = [{
 {
   label: "iframe",
   path: "/components/iframe"
+},
+{
+  label: "表单",
+  path: "/components/formItem"
 }]
 
 // 复合组件

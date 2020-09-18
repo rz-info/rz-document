@@ -53,8 +53,13 @@ const routes = [{
       name: "componentsIframe",
       component: resolve =>
         require(["@/views/components/iframe.vue"], resolve)
-    }
-    ]
+    },
+    {
+      path: "/components/formItem",
+      name: "componentsFormItem",
+      component: resolve =>
+        require(["@/views/components/formItem.vue"], resolve)
+    }]
   },
   {
     path: "/projectIssues",
@@ -65,11 +70,11 @@ const routes = [{
     },
     component: resolve => require(["@/views/projectIssues/index.vue"], resolve),
     children: [{
-      path: "/projectIssues/crossDomainSpread", 
+      path: "/projectIssues/crossDomainSpread",
       name: "projectIssuesCrossDomainSpread",
       component: resolve => require(["@/views/projectIssues/crossDomainSpread.vue"], resolve)
-    },{
-      path: "/projectIssues/pageCache", 
+    }, {
+      path: "/projectIssues/pageCache",
       name: "projectIssuesPageCache",
       component: resolve => require(["@/views/projectIssues/pageCache.vue"], resolve)
     }]
