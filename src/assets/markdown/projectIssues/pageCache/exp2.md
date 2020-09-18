@@ -1,8 +1,20 @@
-## 示例
+
+### 添加配置
+在`src\store\modules\pageCache.ts`文件中添加要保存缓存的页面路由及跳转后不删除缓存的路由
+如下代码表示从`/laboratoryList`跳转到`path`为`/laboratoryHistory`的路由或`name`为`seeUploadTestForm`的路由时不会删除缓存
+```ts
+  public pageParamsMap: ObjectOf<pageMap> = { // 主页面与二级页面映射
+    '/laboratoryList': <pageMap>{ // 实验室管理
+      pathList: ['/laboratoryHistory'],
+      nameList: ['seeUploadTestForm', 'uploadTestTable', 'municipalAdministrationTestForm', 'uploadTestTable', 'testForm'],
+      isFirst: true,
+    },
+  }
+```
+
+### 在页面中使用
 ```js
-  @Component({
-    name: "Contractist",
-  })
+  @Component()
   export default class Contractist extends Vue {
     private searchData: Object = { // 筛选数据
       name: "",
@@ -58,44 +70,3 @@
 
 
 ```
-## 配置
-在`src\store\modules\pageCache.ts`文件中添加要保存缓存的页面路由及跳转后不删除缓存的路由
-如下代码表示从`/laboratoryList`跳转到`path`为`/laboratoryHistory`的路由或`name`为`seeUploadTestForm`的路由时不会删除缓存
-```ts
-  public pageParamsMap: ObjectOf<pageMap> = { // 主页面与二级页面映射
-    '/laboratoryList': <pageMap>{ // 实验室管理
-      pathList: ['/laboratoryHistory'],
-      nameList: ['seeUploadTestForm', 'uploadTestTable', 'municipalAdministrationTestForm', 'uploadTestTable', 'testForm'],
-      isFirst: true,
-    },
-  }
-```
-
-## 使用方法
-```js
-  // 引入 
-  import {
-    pageCache,
-    getCache,
-    coverSearchData
-  } from "@/store/modules/pageCache"
-
-  // 列表参数, 先获取缓存
-  dto = getCache(this.$route) || dto;
-
-  // 获取其他参数
-  other = getCache(this.$route, 1);
-
-  // 在列表接口响应后将此次请求写入缓存
-  pageCache.addCache({
-    route: this.$route, // 当前路由, 必填
-    params: dto, // 参数, 必填
-    other: { // 其他需要缓存的数据, 选填
-      curTagItems: this.curTagItems
-    }, 
-  })
-
-  // 覆盖搜索框参数
-  coverSearchData(this.$route, this.searchData);
-```
-

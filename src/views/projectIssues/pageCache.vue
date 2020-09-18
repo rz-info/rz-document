@@ -1,13 +1,20 @@
 <template>
   <zTitle level="1" text="列表参数缓存">
-    <pageCach />
+    <zExample title="示例">
+      <template v-slot:document>
+        <exp2 />
+      </template>
+    </zExample>
+    <exp1 />
   </zTitle>
 </template>
 <script>
-  import pageCach from '@/assets/markdown/projectIssues/pageCache.md'
+  import exp1 from '@/assets/markdown/projectIssues/pageCache/exp1.md'
+  import exp2 from '@/assets/markdown/projectIssues/pageCache/exp2.md'
   export default {
     components: {
-      pageCach
+      exp1,
+      exp2
     },
   }
 </script>

@@ -1,14 +1,14 @@
 ## 示例代码
 
 ```html
-<commonIframe style="height:500px;border:1px solid" :src="src" />
+<commonIframe style="height:200px;border:1px solid" :src="src" />
 ```
 
 ```js
 export default {
   data() {
     return {
-      src: '/index', // 路径
+      src: '/index?name=zkb', // 路径
     }
   }
 }

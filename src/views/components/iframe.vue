@@ -1,7 +1,7 @@
 <template>
   <zTitle class="wrapper" level="1" text="iframe">
     <zExample title="示例">
-      <commonIframe style="height:500px;border:1px solid" :src="src" />
+      <commonIframe style="height:200px;border:1px solid" :src="src" />
       <template v-slot:document>
         <exp1 />
       </template>
@@ -23,7 +23,7 @@
     },
     data() {
       return {
-        src: '/reportCompilation/1303589273919950848',
+        src: '/index',
       }
     }
   };
