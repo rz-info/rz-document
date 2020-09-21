@@ -37,10 +37,10 @@ const componentsMenuList: Object[] = [{
   label: "弹窗",
   path: "/components/eject"
 },
-{
-  label: "按钮",
-  path: "/components/button"
-},
+// {
+//   label: "按钮",
+//   path: "/components/button"
+// },
 {
   label: "iframe",
   path: "/components/iframe"
@@ -63,6 +63,9 @@ const projectIssuesMenuList: Object[] = [{
 },{
   label: "列表参数缓存",
   path: "/projectIssues/pageCache"
+},{
+  label: 'element表单校验',
+  path: "/projectIssues/ementuiVaildate"
 }]
 export {
   topMenuList,

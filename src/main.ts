@@ -4,6 +4,8 @@ import router from "@/router.ts";
 import "normalize.css";
 import "prismjs/themes/prism.css";
 import "@/components/index"
+import getVaildate from '@/utils/elementUIVaildate'
+Vue.prototype.$getVaildate = getVaildate
 
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";

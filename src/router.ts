@@ -77,6 +77,10 @@ const routes = [{
       path: "/projectIssues/pageCache",
       name: "projectIssuesPageCache",
       component: resolve => require(["@/views/projectIssues/pageCache.vue"], resolve)
+    }, {
+      path: "/projectIssues/ementuiVaildate",
+      name: "projectIssuesEmentuiVaildate",
+      component: resolve => require(["@/views/projectIssues/ementuiVaildate.vue"], resolve)
     }]
   },
   {
