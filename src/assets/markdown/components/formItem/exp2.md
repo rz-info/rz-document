@@ -35,6 +35,16 @@ export default {
               value: '4'
             }]
           }
+        }, {
+          type: 'text',
+          required: true,
+          show(data) {
+            return data.fp1 == 1;
+          },
+          template: {
+            text: '单选框选择选项1的时候显示',
+            style: 'color: red'
+          }
         }],
         [{
           label: '时间',

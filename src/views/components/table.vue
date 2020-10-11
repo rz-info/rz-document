@@ -73,8 +73,12 @@
   import exp1 from "@/assets/markdown/components/table/exp1.md";
   import exp2 from "@/assets/markdown/components/table/exp2.md";
   import exp3 from "@/assets/markdown/components/table/exp3.md";
+<<<<<<< HEAD
   import exp4 from "@/assets/markdown/components/table/exp4.md";
   
+=======
+
+>>>>>>> 08a3e89d6cce5a59cab1e68c21b8aaddc55681a3
   import commonTable from "@/components/Common/table.vue";
 
   // 示例1代码
@@ -142,7 +146,7 @@
             label: "查看详情",
             style: "background: green;",
             event: "viewDetails"
-          },{
+          }, {
             label: "编辑",
             style: "background: blue;",
             event: "edit",
@@ -219,6 +223,56 @@
   }
 
 
+  const tableMap = [ // 用于生成表格的配置
+
+    {
+      name: '开票日期',
+      prop: 'invoicingDate',
+    },
+    {
+      name: '序号sd',
+    },
+    {
+      name: '开票金额',
+      prop: 'invoiceFee',
+    },
+    {
+      name: '发票号码',
+      prop: 'invoiceNumber',
+    },
+    {
+      name: '领票人',
+      prop: 'ticketHolder',
+    },
+    {
+      name: '备注',
+      prop: 'remark',
+    },
+    {
+      name: '查看',
+      prop: 'authFileName',
+      width: 200, // 宽度, 选填
+      template: { // 其他组件写在 templat 里, 选填
+        btn: [{
+          label: '发票附件', // 按钮文本
+          style: 'background:#1DB2A0;border:none',
+          event: 'invoiceAttachment' // 按钮事件(需在父级定义同名函数并当做自定义事件传入表格组件)
+        }]
+      }
+    },
+    {
+      name: '操作',
+      prop: 'authFileName',
+      width: 200, // 宽度, 选填
+      template: { // 其他组件写在 templat 里, 选填
+        btn: [{
+          label: '编辑', // 按钮文本
+          style: 'background:#20335D;border:none',
+          event: 'editInvoice' // 按钮事件(需在父级定义同名函数并当做自定义事件传入表格组件)
+        }]
+      }
+    }
+  ]
 
   // 示例3代码
   const mixin3 = {
