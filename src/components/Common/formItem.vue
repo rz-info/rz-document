@@ -1,16 +1,9 @@
-<!--
- * @Author: 张魁堡
- * @Date: 2020-09-16 11:09:25
- * @LastEditTime: 2020-09-18 17:23:06
- * @LastEditors: 张魁堡
- * @Description: 
- * @FilePath: \ruite\src\components\Common\formItem.vue
--->
 <template>
   <div>
     <el-row type="flex" class="fl-jc-btn" v-for="(rowData,i) in renderMap" :key="i">
       <el-col :span="colData.span" v-for="(colData,ci) in rowData" :key="ci" style="display: flex">
-        <el-form-item :label="colData.label" :prop="colData.model" style="flex:1">
+
+        <el-form-item :label="colData.label" :prop="colData.model" style="flex:1" v-if="showItem(colData)">
 
           <el-radio-group v-if="colData.type=='radio'" v-model="formData[colData.model]" :disabled="colData.disabled">
             <el-radio v-for="(radioData,rdi) in colData.template.radioList" :label="radioData.value" :key="rdi">
@@ -26,12 +19,11 @@
           <div v-else-if="colData.type=='text'" :style="colData.template.style">{{colData.template.text}}</div>
 
           <el-select v-else-if="colData.type=='select'" v-model="formData[colData.model]" placeholder="请选择"
-            style="width:100%">
+            style="width:100%" :disabled="colData.disabled">
             <el-option v-for="(item,opi) in colData.template.optionList" :key="opi" :label="item.label"
               :value="item.value">
             </el-option>
           </el-select>
-
           <el-input v-else v-model="formData[colData.model]" :disabled="colData.disabled"></el-input>
         </el-form-item>
         <template v-if="colData.brother">
@@ -95,6 +87,17 @@
           })
         });
         return originMap;
+      }
+    },
+    methods: {
+      showItem(data) {
+        if (data.show != undefined) {
+          if (typeof data.show == 'function') {
+            return data.show(this.formData, data);
+          }
+          return data.show;
+        }
+        return true;
       }
     }
   }

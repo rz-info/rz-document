@@ -20,6 +20,10 @@ formMap = [
   model: 'fp1', // 要绑定的数据, 对应 formData.fp1
   required: true, // 是否必填
   disabled: true, // 是否禁用
+  show: true, // 是否显示
+  show(formData, colData) { // 是否显示, 函数形式, 接收两个参数, 一参为表单数据, 二参为当前元素配置
+    return formData.fp1 == 1;
+  }, 
   type: 'radio', // 类型, 见 formItem-type
   template: {}, // 存放其他数据
   brother: [{ // 后面加一个级联/关联组件

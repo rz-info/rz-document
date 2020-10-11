@@ -129,6 +129,16 @@
                 value: '4'
               }]
             }
+          }, {
+            type: 'text',
+            required: true,
+            show(data) {
+              return data.fp1 == 1;
+            },
+            template: {
+              text: '单选框选择选项1的时候显示',
+              style: 'color: red'
+            }
           }],
           [{
             label: '时间',
@@ -165,7 +175,7 @@
             model: 'fp5',
             template: {
               text: '时间只能选择xxx与xxx之间',
-              style: 'color:red;'
+              style: 'color:#333;'
             }
           }],
           [{

@@ -1,5 +1,5 @@
 <template>
-  <zTitle level="1" text="校验">
+  <zTitle level="1" text="element表单校验">
     <zExample title="示例">
       <el-form ref="form" :model="formData" :rules="rules" label-width="120px" style="margin-top: 60px;">
         <commonFormItem :map="formMap" :formData="formData" />
