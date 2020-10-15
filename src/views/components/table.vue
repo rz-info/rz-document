@@ -73,12 +73,7 @@
   import exp1 from "@/assets/markdown/components/table/exp1.md";
   import exp2 from "@/assets/markdown/components/table/exp2.md";
   import exp3 from "@/assets/markdown/components/table/exp3.md";
-<<<<<<< HEAD
   import exp4 from "@/assets/markdown/components/table/exp4.md";
-  
-=======
-
->>>>>>> 08a3e89d6cce5a59cab1e68c21b8aaddc55681a3
   import commonTable from "@/components/Common/table.vue";
 
   // 示例1代码

@@ -6,17 +6,22 @@
     <zTitle level="2" text="级联输入框">
       <cascaderCom class="form-wrap" />
     </zTitle>
+    <zTitle level="3" text="财务输入框">
+      <financeCom class="form-wrap" />
+    </zTitle>
   </zTitle>
 </template>
 <script>
   import zTitle from '@/components/documentComponents/zTitle'
   import relationCom from './relationInput'
   import cascaderCom from './cascaderInput'
+  import financeCom from './financeInput'
   export default {
     components: {
       zTitle,
       relationCom,
-      cascaderCom
+      cascaderCom,
+      financeCom
     }
   }
 </script>
