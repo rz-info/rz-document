@@ -38,7 +38,7 @@
     },
     computed: {
       showText() {
-        return this.formatAmount(this.inputModel);
+        return this.inputModel ? this.formatAmount(this.inputModel) : '';
       }
     },
     data() {
@@ -89,11 +89,12 @@
         return xs ? zs + '.' + xs : zs;
       },
       change(val) {
-        this.$emit('update:inputModel', this.fullString(val, this.decimal));
+        this.$emit('update:inputModel', val ? this.fullString(val, this.decimal) : '');
       }
     },
     mounted() {
-      this.$emit('update:inputModel', this.fullString(this.inputModel, this.decimal));
+      if(this.inputModel) this.$emit('update:inputModel', this.fullString(this.inputModel, this.decimal));
+      
     }
   }
 </script>

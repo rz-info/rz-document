@@ -12,15 +12,7 @@
     },
     data() {
       return {
-        inputModel: '10000'
-      }
-    },
-    methods: {
-      change(data) {
-        this.$message.success(`选择了${data.label}, value为${data.value}`);
-      },
-      btn() {
-        console.log(this.inputModel)
+        inputModel: ''
       }
     }
   }
