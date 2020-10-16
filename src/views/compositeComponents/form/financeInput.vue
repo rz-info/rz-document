@@ -12,7 +12,7 @@
     },
     data() {
       return {
-        inputModel: ''
+        inputModel: '66600.00'
       }
     }
   }

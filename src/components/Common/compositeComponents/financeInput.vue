@@ -1,7 +1,8 @@
 <template>
   <div class="rz-financeInput">
 
-    <el-input v-model="inputVal" @focus="focusKey = true" @blur="focusKey = false" @change="change" />
+    <el-input v-model="inputVal" @focus="focusKey = true" @blur="focusKey = false" @change="change" :disabled="readonly"
+      :placeholder="placeholder" />
 
     <div class="symbol">{{symbol}}</div>
 
@@ -20,12 +21,20 @@
       },
       symbol: {
         default: '￥'
+      },
+      placeholder: {
+        default: "请输入"
+      },
+      readonly: {
+        default: false
       }
     },
     watch: {
       inputModel: {
         handler(now) {
-          this.inputVal = this.fullString(this.inputModel, this.decimal);
+          if (this.inputModel) this.$emit('update:inputModel', this.fullString(this.inputModel, this.decimal));
+          this.showText = this.formatAmount(this.inputModel);
+          this.inputVal = this.showText;
         },
         immediate: true
       },
@@ -36,15 +45,11 @@
         immediate: true
       }
     },
-    computed: {
-      showText() {
-        return this.inputModel ? this.formatAmount(this.inputModel) : '';
-      }
-    },
     data() {
       return {
         focusKey: false,
-        inputVal: ''
+        inputVal: '',
+        showText: '',
       }
     },
     methods: {
@@ -92,11 +97,8 @@
         this.$emit('update:inputModel', val ? this.fullString(val, this.decimal) : '');
       }
     },
-    mounted() {
-      if(this.inputModel) this.$emit('update:inputModel', this.fullString(this.inputModel, this.decimal));
-      
-    }
   }
+
 </script>
 <style lang='scss' scoped>
   .rz-financeInput {
@@ -110,10 +112,12 @@
     }
 
   }
+
 </style>
 
 <style scoped>
   .rz-financeInput>>>.el-input input {
     padding-left: 30px;
   }
+
 </style>
