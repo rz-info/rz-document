@@ -46,9 +46,11 @@
     },
     watch: {
       checked(now) {
+        console.log('select',now)
         this.exportConfig.map = {};
-        now.forEach(ele => {
-          const nowEl = cloneObj(this.exportConfig.tableList[ele - 1]);
+        now.forEach((ele,index) => {
+          console.log('s1',index)
+          const nowEl = cloneObj(this.exportConfig.tableList[index]);
           delete nowEl.id;
           delete nowEl.itemName;
           this.exportConfig.map = {
@@ -112,6 +114,9 @@
     },
     beforeMount() {
       this.init();
+    },
+    mounted() {
+      console.log(1919,this.exportConfig)
     }
   };
 </script>

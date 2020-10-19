@@ -34,6 +34,9 @@
         handler(now) {
           if (this.inputModel) this.$emit('update:inputModel', this.fullString(this.inputModel, this.decimal));
           this.showText = this.formatAmount(this.inputModel);
+          if(this.showText==0){
+            this.showText = "";
+          }
           this.inputVal = this.showText;
         },
         immediate: true
