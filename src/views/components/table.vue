@@ -1,8 +1,9 @@
 <template>
   <zTitle class="wrapper" level="1" text="列表">
     <zExample title="示例一">
-      <commonTable :tableMap="example1.tableMap" :tableData="example1.tableData" :tableConfig="example1.tableConfig"
-        @viewDetails="viewDetails" @edit="edit" @selection-change="selectChange" />
+      <commonTable ref="table1" :tableMap="example1.tableMap"
+        :tableData="example1.tableData" :tableConfig="example1.tableConfig" @viewDetails="viewDetails" @edit="edit"
+        @selection-change="selectChange" />
       <template v-slot:document>
         <exp1 />
       </template>
@@ -38,33 +39,35 @@
         <exp3 />
       </template>
     </zExample>
-		<zExample title="示例四">
-		  <h4>使用slot自定义列表内容2</h4>
-			<el-row style="margin-top:30px" class="table_his">
-				<commonTable :tableMap="example4.tableMap" :tableData="example4.tableData" @editEject="editEject" :tableConfig="example4.tableConfig">
-					<template v-slot:btn="{ rowData, template, scope }">
-						<template v-for="(item,key) in template">
-							<div v-if="key == 'img'" :key="key">
-								 <span>{{scope.$index+1}}&emsp;</span>
-								<img style="margin-left:20px;" v-if="rowData.modifyNumber" src="@/views/classes/icon/sanjiao.png" @click.stop="selectEditHistorical(scope.$index,rowData)" alt="">
-								<div class="historyInvoice" v-show="example4.showKey[scope.$index]" >
-									<div v-for="item in example4.LedgerHistory" :key="item.id" >
-										<div class="list">
-											<span class="date">{{item.updatedAt}}</span>
-											<p class="text">{{item.modifyContent}}</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</template>
-					</template>
-				</commonTable>
-			</el-row>
-		  <template v-slot:document>
-				<!-- 放md文件 -->
-				<exp4 />
-		  </template>
-		</zExample>
+    <zExample title="示例四">
+      <h4>使用slot自定义列表内容2</h4>
+      <el-row style="margin-top:30px" class="table_his">
+        <commonTable :tableMap="example4.tableMap" :tableData="example4.tableData" @editEject="editEject"
+          :tableConfig="example4.tableConfig">
+          <template v-slot:btn="{ rowData, template, scope }">
+            <template v-for="(item,key) in template">
+              <div v-if="key == 'img'" :key="key">
+                <span>{{scope.$index+1}}&emsp;</span>
+                <img style="margin-left:20px;" v-if="rowData.modifyNumber" src="@/views/classes/icon/sanjiao.png"
+                  @click.stop="selectEditHistorical(scope.$index,rowData)" alt="">
+                <div class="historyInvoice" v-show="example4.showKey[scope.$index]">
+                  <div v-for="item in example4.LedgerHistory" :key="item.id">
+                    <div class="list">
+                      <span class="date">{{item.updatedAt}}</span>
+                      <p class="text">{{item.modifyContent}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </template>
+        </commonTable>
+      </el-row>
+      <template v-slot:document>
+        <!-- 放md文件 -->
+        <exp4 />
+      </template>
+    </zExample>
     <testMD />
   </zTitle>
 </template>
@@ -92,7 +95,19 @@
       },
       selectChange(val) {
         console.log(val);
+      },
+      toggleRowSelection() {
+        let data = this.example1.tableData.data;
+        let zTable = this.$refs.table1.$refs.rzTable;
+        data.forEach((ele, index) => {
+          if (index > 0) {
+            zTable.toggleRowSelection(ele, true);
+          }
+        })
       }
+    },
+    mounted() {
+      this.toggleRowSelection();
     }
   }
   // 示例1列表配置
@@ -338,73 +353,78 @@
         example4,
       }
     },
-		methods:{
-			selectEditHistorical(key,data){
-				this.hideTips();
-				this.$nextTick(()=>{
-					this.$set(this.example4.showKey,key,true)
-  				// 这里可以请求接口获取参数
-// 					 let dto = {
-// 						id:data.id,
-// 						status:data.status
-// 					 }
-// 					 findPayLedgerHistory(dto).then(res => {
-// 						this.LedgerHistory = res.data;
-// 					 })
-					this.example4.LedgerHistory=[{updatedAt:"000000",modifyContent:"内容999999999999"},{updatedAt:"000000",modifyContent:"内容999999999999"}]
-				});
-					
-			},
-			hideTips() {
-				for(let i in this.example4.showKey) {
-					this.example4.showKey[i] = false;
-				}
-			}
-		},
-		mounted(){
-			document.addEventListener('click',this.hideTips);
-		},
-		destroy(){
-			document.removeEventListener('click',this.hideTips);
-		}
-	}
-// 示例4 data
+    methods: {
+      selectEditHistorical(key, data) {
+        this.hideTips();
+        this.$nextTick(() => {
+          this.$set(this.example4.showKey, key, true)
+          // 这里可以请求接口获取参数
+          // 					 let dto = {
+          // 						id:data.id,
+          // 						status:data.status
+          // 					 }
+          // 					 findPayLedgerHistory(dto).then(res => {
+          // 						this.LedgerHistory = res.data;
+          // 					 })
+          this.example4.LedgerHistory = [{
+            updatedAt: "000000",
+            modifyContent: "内容999999999999"
+          }, {
+            updatedAt: "000000",
+            modifyContent: "内容999999999999"
+          }]
+        });
+
+      },
+      hideTips() {
+        for (let i in this.example4.showKey) {
+          this.example4.showKey[i] = false;
+        }
+      }
+    },
+    mounted() {
+      document.addEventListener('click', this.hideTips);
+    },
+    destroy() {
+      document.removeEventListener('click', this.hideTips);
+    }
+  }
+  // 示例4 data
   const example4 = {
-		showKey:{},//标记当前点击的列表
-		LedgerHistory:[],
+    showKey: {}, //标记当前点击的列表
+    LedgerHistory: [],
     tableData: {
       data: [{
-				modifyNumber:null,
-				content:"内容",
-				remark:"备注",
-				id:"1",
-				status:"aa"
-				},
-				{
-				modifyNumber:2,
-				content:"内容",
-				remark:"备注",
-				id:"2",
-				status:"bb"
-				}
+          modifyNumber: null,
+          content: "内容",
+          remark: "备注",
+          id: "1",
+          status: "aa"
+        },
+        {
+          modifyNumber: 2,
+          content: "内容",
+          remark: "备注",
+          id: "2",
+          status: "bb"
+        }
       ],
       total: 2,
       page: 1,
       pageSize: 2
     },
-		tableConfig : { // 其他配置, 选填
+    tableConfig: { // 其他配置, 选填
       hideIndex: true // 隐藏序号列, 默认false
     },
-    tableMap: [
-			{
+    tableMap: [{
         name: '序号',
-        prop:"index",
+        prop: "index",
         width: 80, // 宽度, 选填
         template: {
           div: {
             event: 'click'
           },
-          img:{
+          img: {
             event: 'click'
           }
         }
@@ -413,10 +433,10 @@
         name: '内容',
         prop: 'content',
       },
-			{
-			  name: '备注',
-			  prop: 'remark',
-			},
+      {
+        name: '备注',
+        prop: 'remark',
+      },
       {
         name: '查看',
         prop: 'authFileName',
@@ -437,17 +457,18 @@
       exp1,
       exp2,
       exp3,
-			exp4,
+      exp4,
       commonTable,
     },
-    mixins: [mixin1, mixin2, mixin3,mixin4]
+    mixins: [mixin1, mixin2, mixin3, mixin4]
   };
 </script>
 <style lang="scss" scoped>
   .wrapper {
     width: calc(100% - 1px);
   }
-	.historyInvoice{
+
+  .historyInvoice {
     position: absolute;
     left: 75px;
     background: #EAF1FF;
@@ -457,18 +478,21 @@
     border-radius: 8px;
     padding: 20px;
   }
-  .historyInvoice .list{
+
+  .historyInvoice .list {
     text-align: left;
     margin-bottom: 20px;
   }
-  .historyInvoice .date{
+
+  .historyInvoice .date {
     font-size: 14px;
     font-family: Microsoft YaHei;
     font-weight: 400;
     color: #666666;
     line-height: 10px;
   }
-  .historyInvoice .text{
+
+  .historyInvoice .text {
     font-size: 14px;
     font-family: Microsoft YaHei;
     font-weight: 400;
@@ -477,10 +501,11 @@
   }
 </style>
 <style lang="css" scoped>
-  .table_his>>>.el-table__body-wrapper{
+  .table_his>>>.el-table__body-wrapper {
     overflow: visible;
   }
-  .table_his>>>.el-table{
+
+  .table_his>>>.el-table {
     overflow: visible;
   }
 </style>

@@ -1,7 +1,7 @@
 ## 示例一代码
 
 ```html
-<commonTable :tableMap="tableMap" :tableData="tableData" :tableConfig="tableConfig" @viewDetails="viewDetails" @edit="edit" @selection-change="selectChange" />
+<commonTable ref="table" :tableMap="tableMap" :tableData="tableData" :tableConfig="tableConfig" @viewDetails="viewDetails" @edit="edit" @selection-change="selectChange" />
 ```
 
 ```js
@@ -81,6 +81,15 @@ export default {
       selectChange(val) {
         console.log(val)
       }
+    },
+    toggleRowSelection() {
+      let data = this.tableData.data;
+      let zTable = this.$refs.table.$refs.rzTable;
+      data.forEach((ele, index) => {
+        if (index > 0) {
+          zTable.toggleRowSelection(ele, true);
+        }
+      })
     }
   };
 ```
