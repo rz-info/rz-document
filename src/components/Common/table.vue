@@ -2,11 +2,11 @@
   <div class="rz-table">
     <el-table ref="rzTable" class="rz-table-content" :data="tableData.data" border style="width: 100%;text-align:left"
       :header-cell-style="headerStyle" @selection-change="handleSelectionChange">
-      <el-table-column v-if="tableConfig.showCheckBox" type="selection" align="center" :key="Math.random()"/>
+      <el-table-column v-if="tableConfig.showCheckBox" type="selection" align="center" :key="Math.random()" />
       <el-table-column width="50" v-if="!tableConfig.hideIndex" type="index" align="center" label="序号"
         :key="Math.random()" />
-      <template v-for="(item,index) in tableMap" >
-        <el-table-column v-if="item.type == 'selection'" type="selection" align="center" :key="index"/>
+      <template v-for="(item,index) in tableMap">
+        <el-table-column v-if="item.type == 'selection'" type="selection" align="center" :key="index" />
         <el-table-column v-else :prop="item.prop" :type="item.type" :align="item.align || 'center'" :label="item.name"
           :width="item.width" :key="index">
           <template slot-scope="scope">
@@ -36,6 +36,11 @@
     components: {
       PageCount
     },
+    data() {
+      return {
+        selectDataForPage: {}
+      }
+    },
     props: {
       tableMap: {
         type: Array,
@@ -55,7 +60,7 @@
             showCheckBox: false // 第一列显示复选框
           };
         }
-      }
+      },
     },
     methods: {
       emitEvent(event, data) {
@@ -77,7 +82,8 @@
 
       // 复选框
       handleSelectionChange(data) {
-        this.$emit("selection-change", data);
+        this.selectDataForPage[this.tableData.page] = data;
+        this.$emit("selection-change", data, this.selectDataForPage);
       },
       // 隐藏按钮
       disabledBtn(btn, data) {
